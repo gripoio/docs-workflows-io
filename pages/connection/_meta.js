@@ -1,5 +1,4 @@
 export default {
   "introduction": "Introduction",
-  "createconnection": "Create Connection"
-  
+  "createconnection": "Create Connection" 
 };
