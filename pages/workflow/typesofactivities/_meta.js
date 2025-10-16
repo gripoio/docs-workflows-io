@@ -1,8 +1,8 @@
 export default {
-  "amazonmanagedcluster": "Amazon Managed Cluster",
-  "amazoncostmanagedcluster": "Amazon Cost Managed CSluster",
-  "azuremanagedcluster":"Azure Managed Cluster",
-  "azurecostmanagedcluster": "Azure Cost Managed Cluster",
+  "amazonmanagedcluster": "Amazon Managed Kubernestes",
+  "amazoncostmanagedcluster": "Amazon Cost Management",
+  "azuremanagedcluster":"Azure Managed Kubernetes",
+  "azurecostmanagedcluster": "Azure Cost Management",
  "core": "Core",
  "gmail":"G-Mail",
  "whatsapp":"WhatsApp",
