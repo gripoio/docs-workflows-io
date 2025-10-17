@@ -9,3 +9,94 @@ This is useful when you want real-time responses or automatic actions between to
 * When a new issue appears in your monitoring tool, GRiPO automatically restarts the affected service.
 * When a ticket is created in Jira, GRiPO sends an alert to Slack.
 * When a GitHub commit is pushed, GRiPO starts a deployment workflow automatically.
+
+#### Create Webhook Type Workflow
+
+* Navigate to the Workflow tab from the main menu.
+<br />
+![workflow](/main1.png)<br  />
+* On clicking Workflow, a window will appear displaying a list of all existing workflows.
+* To create a new workflow, click on the<b> Create Workflow</b> button.
+<br />
+![workflow](/workflow/workflow0.png)<br  />
+
+* A form will appear containing the following fields:
+
+<b>Name</b> : Enter a unique name for your workflow.<br  />
+<b>Description</b> : Add a short explanation of what the workflow does.<br  />
+<b>Type</b> : Select the workflow type "Webhook" from the available options.<br  />
+<b>Retry</b> : Define how many times a failed step should be retried.<br  />
+<b>Tags </b>: Add relevant tags to help categorize and filter workflows.<br  />
+
+<br />
+![webhook](/workflow/typesofworkflo/webhooktype1.png)<br  />
+
+* After filling in all the required fields, click on the <b>Next button</b> to create your workflow.
+<br />
+![webhook](/workflow/typesofworkflo/webhooktype2.png)<br  />
+* After selecting “Webhook” as the workflow type, a form appears with several configuration fields.
+* Fill the following details:
+
+<b>Path: Define the API path for your webhook.</b>
+<br  />
+<b>Method: Choose the HTTP method</b>
+
+ Choose one of the following HTTP methods based on the action you want to perform:
+* <b>POST:</b> Used to send new data to a server or application. Example: sending form data or creating a new record.
+* <b>GET:</b> Used to retrieve existing data from a server. Example: fetching details of a cluster or user.
+* <b>PUT:</b> Used to update existing data completely. Example: replacing an old configuration with a new one.
+* <b>PATCH: </b>Used to update data partially, changing only specific fields. Example: updating the status of a node without altering other details.
+* <b>DELETE:</b> Used to remove or delete data from the server. Example: deleting an unused resource or record.
+<br />
+![webhook](/workflow/typesofworkflo/webhooktype2a.png)<br  />
+<b>The Type option defines how and when your webhook workflow should run after being triggered. GRiPO offers three types:</b>
+* <b>Immediately:</b> The workflow starts as soon as the webhook is triggered, without waiting for any additional input or response. Ideal for quick, automated actions.
+Example: Restarting a service instantly when an alert is received.
+* <b>Select Activity:</b> The webhook triggers a specific activity within the workflow instead of running the entire workflow. Useful when you only want to perform one defined action.
+Example: Updating cost data or sending a notification without executing all steps.
+* <b>Webhook Response: </b>The webhook waits for a response before continuing to the next step in the workflow. This is best for integrations that require confirmation or data exchange.
+Example: Waiting for an API to return success or failure before moving ahead.
+<br />
+![webhook](/workflow/typesofworkflo/webhooktype2b.png)<br  />
+
+<b>"Enabled" option lets you control whether your webhook is active or inactive.</b>
+
+* <b>Active: </b>The webhook is live and ready to receive or send data when triggered.
+* <b>Inactive:</b> The webhook is disabled and will not respond until reactivated.
+<br />
+![webhook](/workflow/typesofworkflo/webhooktype2c.png)<br  />
+
+<b>"Is Public "option defines whether your webhook can be accessed publicly or kept private.</b>
+* <b>True:</b> The webhook is publicly accessible, meaning external systems can trigger it without authentication (use with caution).
+* <b>False:</b> The webhook is private and secure, allowing access only through authorized connections.
+<br />
+![webhook](/workflow/typesofworkflo/webhooktype2d.png)<br  />
+<b> If you want to include additional settings, click on the “Add” option.</b>
+
+<b>When you click on the “Add” option, a list of extra configuration fields appears. These settings help you control access, security, and performance of your webhook.</b>
+
+* <b>IP Whitelist:</b>Define specific IP addresses that are allowed to access the webhook. This adds an extra layer of security by blocking unauthorized sources.
+* <b>Authorization:</b>Set authentication credentials (like tokens or keys) required to access the webhook, ensuring only trusted systems can trigger it.
+* <b>Allow Content Type:</b>Specify which data formats (e.g., JSON, XML, or form data) the webhook will accept from incoming requests.
+* <b>Field Count Limit:</b>Limit the maximum number of data fields allowed in a webhook request to prevent oversized or complex payloads.
+* <b>JSON Depth Limit:</b>Set how deeply nested JSON objects can be in a request — this helps protect against overly complex or malicious payloads.
+* <b>Max Payload Size (Bytes):</b>Define the largest request size (in bytes) that the webhook can handle, ensuring system stability and performance.
+* <b>Max Requests Per Minute:</b>Control how many requests the webhook can receive per minute to prevent overloading or misuse.
+<br />
+![webhook](/workflow/typesofworkflo/webhooktype2e.png)<br  />
+<br />
+* After filling in all the required fields, click on the <b>Add Webhook</b> 
+
+* A window will appear with fields for adding Variables and their Values.
+* You can add as many variables as needed by clicking <b>Add More Variable</b>.
+* If you don’t want to add any variables, click <b>Skip Variables</b> to move ahead.
+* If you’ve added variables, click <b>Save and Continue </b>to proceed.
+<br />
+
+<br />
+![webhook](/workflow/typesofworkflo/webhooktype3.png)<br  />
+
+* A confirmation popup will appear, indicating that your workflow has been successfully created.
+* Once the workflow is created, you can view it in the workflow .
+<br />
+![webhook](/workflow/typesofworkflo/webhooktype4.png)<br  />
