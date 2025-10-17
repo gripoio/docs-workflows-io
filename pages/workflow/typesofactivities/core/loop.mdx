@@ -1,0 +1,99 @@
+#### Loop Activity 
+
+<b> Loop Activity</b> in a workflow is used to repeat a set of actions multiple times for each item in a list or dataset. It helps automate repetitive tasks without manually creating the same steps again.
+We use <b>Loop </b>when we need to perform similar operations on multiple resources, records, or items in sequence — making workflows smarter and more efficient.
+
+#### Use Case:
+
+<b> You can use this loop workflow to:</b>
+* Automatically fetch all clusters and their nodes
+* Resize or modify nodes one by one
+* Get Slack notifications for every action taken 
+
+#### Example: Get Cluster Name and Node Pool Name using Loop Activity
+
+This workflow demonstrates how to automatically fetch the cluster name and node pool name by using<b> Loop activities.</b>It helps you process multiple clusters and their node pools without manually repeating steps.
+
+##### Steps to Create the Workflow
+
+  <b>Create Workflow in Gripo</b> <br />
+* Begin by navigating to the [Workflow tab](/workflow) in your Gripo dashboard.
+* Click [“Create Workflow”](/workflow/createworkflow), give it a name and description, and select the type of workflow you want to build.
+Once created, you can start adding activities.
+<br />
+![loop](/workflow/core/loop/loop1.png)<br  />
+
+<b>Add Activity : Get Cluster List (Azure Managed Kubernetes)</b>
+* Start by adding the [Azure Managed Kubernetes](/workflow/typesofactivities/amazonmanagedcluster) activity to fetch all clusters available in your environment.
+<br />
+![loop](/workflow/core/loop/loop1.1.png)<br  />
+* When you select this activity, a list of available actions will appear.
+* Choose <b>“All Clusters” </b>to fetch the complete list of clusters from your environment.
+<br />
+![loop](/workflow/core/loop/loop2.png)<br  />
+* In the configuration form, choose <b>Azure</b> in the cloud provider and select the <b>Azure [connection reference](/connection/createconnection) </b>you’ve already created.
+* Then click <b>Submit</b> to confirm.
+<br />
+![loop](/workflow/core/loop/loop3.png)<br  />
+* <b>Azure Managed Cluster</b> is added in the workflow to connect with Azure and manage cluster operations.
+<br />
+![loop](/workflow/core/loop/loop4.png)<br  />
+
+<b>Add Loop Activity : Iterate Over Cluster List</b>
+* Click on <b>"+" </b>button to add a new activity 
+* Select <b>Core</b>
+<br />
+![loop](/workflow/core/loop/loop5.png)<br  />
+* Select a <b>Loop activity.</b> 
+<br />
+![loop](/workflow/core/loop/loop8.png)<br  />
+* Inside the loop, add an item <b>"AzureManagedKUbernetes A1</b>, to Get Cluster information.
+* Click on <b>Submit Button</b>.
+<br />
+![loop](/workflow/core/loop/loop6.png)<br  />
+* The loop will now process cluster.
+* This will return important details like<b> Cluster Name, Region, etc.</b>
+
+<b>Add Second Loop :Iterate Over Node List</b>
+* From the cluster data received in the previous step, add another Loop activity to go through each node pools.
+* Click on <b>"+" </b>button to add a new activity 
+<br />
+![loop](/workflow/core/loop/loop7.png)<br  />
+* Select <b>Core</b>
+<br />
+![loop](/workflow/core/loop/loop5.png)<br  />
+* Select a <b>Loop activity.</b> 
+<br />
+![loop](/workflow/core/loop/loop8.png)<br  />
+* Inside this loop, you can extract details such as the Node Pool Name, node size, and statusby adding <b>core A2 </b>in item field.
+* Click on <b>Submit Button</b>.
+<br />
+![loop](/workflow/core/loop/loop9.png)<br  />
+* The loop will now process each <b>node pool </b>of the cluster.
+* This will return important details like <b>Node Pool Name, Node Size, and Status.</b>
+
+<b>Add Activity : Slack </b>
+* Add a Slack activity to send a message containing the Cluster Name and Node Pool Name.
+This allows you to receive instant notifications about each node being processed.
+* Click on <b>"+" </b>button to add a new activity 
+<br />
+![loop](/workflow/core/loop/loop10.png)<br  />
+* Select <b>Slack.</b>
+ <br />
+![loop](/workflow/core/loop/loop12.png)<br  /><br />
+* Select <b>"Slack Message"</b> as action. 
+![loop](/workflow/core/loop/loop11.png)<br  /><br />
+* You can type the message you want to send to the Slack channel
+* You can use double <b>curly brackets  </b>to access dynamic values from previous activities
+* To display the Cluster Names use <b>activityA2.items and activity A3.items </b>to display the Node Pool Name in your Slack message.
+* Select the <b>Connection Refrrence (Slack Secret).</b>
+* Select the <b>Slack Channel</b> in which you want to send the message.
+<br />
+![loop](/workflow/core/loop/loop13.png)<br  /><br />
+* <b>Slack</b> is added in the WorkFlow.
+* Click on <b>Saved</b> button to save WorkFlow.
+* Click on <b>Run</b> button to start the workflow.
+![loop](/workflow/core/loop/loop14.png)<br  />
+* The <b>Cluster Name and Node Pool Name </b>are sent to the selected Slack channel as a message.
+<br />
+![loop](/workflow/core/loop/loop15.png)<br  />
